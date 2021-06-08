@@ -1,0 +1,18 @@
+{
+    "description": "Neos CMS cache management backend module",
+    "type": "neos-package",
+    "name": "neosrulez/cachemanager",
+    "require": {
+        "neos/neos": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NeosRulez\\CacheManager\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "NeosRulez.CacheManager"
+        }
+    }
+}

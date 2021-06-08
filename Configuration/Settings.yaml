@@ -1,0 +1,20 @@
+Neos:
+  Neos:
+    modules:
+      administration:
+        submodules:
+          neosRulezCacheManager:
+            label: 'Caches'
+            icon: 'fas fa-bolt'
+            controller: 'NeosRulez\CacheManager\Controller\CacheController'
+            description: 'Module for managing the caches'
+            privilegeTarget: 'NeosRulez.CacheManager:CacheControllerActions'
+NeosRulez:
+  CacheManager:
+    caches:
+      Neos_Fusion_Content:
+        label: 'Neos Content'
+      Flow_Mvc_Routing_Route:
+        label: 'Routes (Matching)'
+      Flow_Mvc_Routing_Resolve:
+        label: 'Routes (Resolving)'

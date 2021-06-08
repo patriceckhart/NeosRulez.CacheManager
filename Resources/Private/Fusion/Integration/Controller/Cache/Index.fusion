@@ -1,0 +1,42 @@
+include: resource://Neos.Fusion/Private/Fusion/Root.fusion
+include: resource://Neos.Fusion.Form/Private/Fusion/Root.fusion
+
+NeosRulez.CacheManager.CacheController.index = NeosRulez.CacheManager:Integration.CacheController.Index
+
+prototype(NeosRulez.CacheManager:Integration.CacheController.Index) < prototype(Neos.Fusion:Component) {
+
+    renderer = afx`
+        <div @if.render={caches} class="neos-table-wrapper">
+            <table class="neos-table">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Backend</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <Neos.Fusion:Loop items={caches} itemName="cache" itemKey="cacheIdentifier" >
+                        <tr>
+                            <td title={cacheIdentifier} >
+                                {cache.label}
+                            </td>
+                            <td>
+                                {cache.backendType}
+                            </td>
+                            <td class="neos-action">
+                                <div class="neos-pull-right" >
+                                    <Neos.Fusion:Link.Action class="neos-button neos-button-primary" href.action="flush" href.arguments={{cacheIdentifier: cacheIdentifier}} >
+                                        <i class="fas fa-sync icon-white" style="margin-right:5px"></i> Flush
+                                    </Neos.Fusion:Link.Action>
+                                </div>
+                            </td>
+                        </tr>
+                    </Neos.Fusion:Loop>
+                </tbody>
+            </table>
+        </div>
+        <p class="neos-help-inline"><i class="fas fa-info-circle"></i> Please note that having to flush the content caches manually usually is a sign of improper configuration. <a href="http://neos.readthedocs.org/en/stable/CreatingASite/ContentCache.html"><i class="fas fa-chevron-right" style="font-size:0.8rem"></i> Read more</a></p>
+    `
+}
+
